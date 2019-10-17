@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ru.hackallcode.chocolate.views.PieceView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/piece"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:background="@drawable/border"
+    android:minWidth="48dp"
+    android:minHeight="48dp">
+
+    <TextView
+        android:id="@+id/pieceText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textSize="@dimen/small_text_size"
+        tools:ignore="SpUsage" />
+</ru.hackallcode.chocolate.views.PieceView>
