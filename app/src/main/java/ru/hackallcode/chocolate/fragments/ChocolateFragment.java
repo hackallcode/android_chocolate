@@ -26,7 +26,7 @@ public class ChocolateFragment extends Fragment {
     final private int LANDSCAPE_WIDTH = 4;
     final private int PORTRAIT_WIDTH = 3;
 
-    private int pieceCount = 0;
+    private int pieceCount = 100;
     private DataAdapter adapter;
 
     public ChocolateFragment() {
