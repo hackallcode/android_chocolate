@@ -22,9 +22,9 @@ import ru.hackallcode.chocolate.R;
 import ru.hackallcode.chocolate.views.PieceView;
 
 public class ChocolateFragment extends Fragment {
-    final private String COUNT_KEY = "COUNT";
-    final private int LANDSCAPE_WIDTH = 4;
-    final private int PORTRAIT_WIDTH = 3;
+    final private static String COUNT_KEY = "COUNT";
+    final private static int LANDSCAPE_WIDTH = 4;
+    final private static int PORTRAIT_WIDTH = 3;
 
     private int pieceCount = 100;
     private DataAdapter adapter;
@@ -37,14 +37,14 @@ public class ChocolateFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         setHasOptionsMenu(true);
         super.onCreate(savedInstanceState);
+        if (savedInstanceState != null) {
+            pieceCount = savedInstanceState.getInt(COUNT_KEY);
+        }
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         adapter = new DataAdapter();
-        if (savedInstanceState != null) {
-            pieceCount = savedInstanceState.getInt(COUNT_KEY);
-        }
         return inflater.inflate(R.layout.chocolate_fragment, container, false);
     }
 
@@ -118,7 +118,7 @@ public class ChocolateFragment extends Fragment {
             holder.piece.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    NumberFragment numberFragment = new NumberFragment(num);
+                    NumberFragment numberFragment = NumberFragment.newInstance(num);
                     FragmentManager manager = getFragmentManager();
                     if (manager != null) {
                         manager

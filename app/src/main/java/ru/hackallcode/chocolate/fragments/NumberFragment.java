@@ -14,20 +14,25 @@ import android.widget.TextView;
 import ru.hackallcode.chocolate.R;
 
 public class NumberFragment extends Fragment {
-    final private String NUMBER_KEY = "NUMBER";
+    final private static String NUMBER_KEY = "NUMBER";
 
     private int number;
 
-    public NumberFragment() {
-    }
-
-    NumberFragment(int number) {
-        this.number = number;
+    static NumberFragment newInstance(int param) {
+        NumberFragment fragment = new NumberFragment();
+        Bundle bundle = new Bundle();
+        bundle.putInt(NUMBER_KEY, param);
+        fragment.setArguments(bundle);
+        return fragment;
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        if (savedInstanceState != null) {
+        Bundle arguments = getArguments();
+        if (arguments != null) {
+            number = arguments.getInt(NUMBER_KEY);
+        }
+        else if (savedInstanceState != null) {
             number = savedInstanceState.getInt(NUMBER_KEY);
         }
         return inflater.inflate(R.layout.number_fragment, container, false);
